@@ -1,5 +1,5 @@
 <template>
-  <button class="btn"><slot></slot></button>
+  <button class="btn">Выбрать</button>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
+  margin: 50px auto;
   
 }
 .btn:hover {

@@ -1,23 +1,21 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="search">
-    <div class="search__btn-container">
-      <button-search @click="GET_RANDOM_CARD">Выбрать</button-search>
-    </div>
-    <card-list></card-list>
+    <CardList />
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import CardList from '@/components/UI/CardList.vue';
 export default {
-  name: "search-page",
-  props: {},
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {...mapActions(["GET_RANDOM_CARD"])},
+    name: "search-page",
+    props: {},
+    data() {
+        return {};
+    },
+    computed: {},
+    methods: {},
+    components: { CardList }
 };
 </script>
 <style scoped>
@@ -29,12 +27,5 @@ export default {
   flex-direction: column;
   align-self: flex-start;
   position: relative;
-}
-
-.search__btn-container {
-  display: flex;
-  margin: 50px auto;
-  width: 80%;
-  justify-content: space-evenly;
 }
 </style>

@@ -1,14 +1,17 @@
 import axios from "axios";
 import { createStore } from 'vuex'
-
-
+ 
 const store = createStore({
   state: {
-    cards: []
+    cards: [],
+    randomCard: {}
   },
   mutations: {
     SET_CARDS_TO_STATE: (state, cards) => {
       state.cards = cards;
+    },
+    SET_RANDOM_CARD_TO_STATE: (state, randomCard) => {
+      state.randomCard = randomCard;
     }
   },
   actions: {
@@ -25,14 +28,28 @@ const store = createStore({
         return err;
       })
     },
-
-    GET_RANDOM_CARD(cards) {
-      return cards[Math.floor(Math.random() * cards.length)];
+    GET_RANDOM_CARD({commit}) {
+      return axios('https://bandaumnikov.ru/api/test/site/get-index', {
+        method: "GET"
+      })
+      .then((cards) => {
+        commit('SET_RANDOM_CARD_TO_STATE', cards.data.data);
+        const randomCard = cards.data.data[Math.floor(Math.random() * cards.data.data.length)];
+        console.log(randomCard);
+        return randomCard;
+      })
+      .catch((err) => {
+        console.log(err)
+        return err;
+      })
     }
   },
   getters: {
     CARDS(state) {
       return state.cards
+    },
+    CARD(state) {
+      return state.randomCard
     }
   }
 });

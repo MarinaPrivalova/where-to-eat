@@ -12,7 +12,6 @@ export default {
 
 <style scoped>
 .btn {
-  padding: 10px 15px;
   position: relative;
   outline: none;
   text-decoration: none;
@@ -22,13 +21,13 @@ export default {
   align-items: center;
   cursor: pointer;
   text-transform: uppercase;
-  padding: 1.8em 4em;
   opacity: 1;
   background-color: #e94560;
   border: 1px solid #0f3460;
 }
 
 .btn__text {
+  padding: 1.8em 4em;
   color: #0f3460;
   font-size: 16px;
   font-weight: 500;

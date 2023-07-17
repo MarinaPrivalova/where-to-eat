@@ -1,28 +1,33 @@
 <template>
   <div class="card">
     <div class="card__container">
-      <h2 class="card__title">{{card_data.name}}</h2>
+      <h2 class="card__title">{{ card_data.name }}</h2>
       <p class="card__text">
-        <span class="card__subtitle">Кухня: </span>{{card_data.cuisine}}
-      </p>
-      <p class="card__text"><span class="card__subtitle">Адрес: </span>{{card_data.address}}</p>
-      <p class="card__text">
-        <span class="card__subtitle">Как пройти: </span>{{card_data.landmark}}
+        <span class="card__subtitle">Кухня: </span>{{ card_data.cuisine }}
       </p>
       <p class="card__text">
-        <span class="card__subtitle">Расстояние: </span>{{card_data.distance}} м.
+        <span class="card__subtitle">Адрес: </span>{{ card_data.address }}
       </p>
       <p class="card__text">
-        <span class="card__subtitle">Время в пути: </span>{{card_data.time}} мин.
+        <span class="card__subtitle">Как пройти: </span>{{ card_data.landmark }}
       </p>
       <p class="card__text">
-        <span class="card__subtitle">Бизнесланч: </span>{{card_data.business_lunch}}
+        <span class="card__subtitle">Расстояние: </span
+        >{{ card_data.distance }} м.
       </p>
       <p class="card__text">
-        <span class="card__subtitle">Средний чек: </span>{{card_data.price}}₽
+        <span class="card__subtitle">Время в пути: </span
+        >{{ card_data.time }} мин.
+      </p>
+      <p class="card__text">
+        <span class="card__subtitle">Бизнесланч: </span
+        >{{ card_data.business_lunch }}
+      </p>
+      <p class="card__text">
+        <span class="card__subtitle">Средний чек: </span>{{ card_data.price }}₽
       </p>
     </div>
-    <img class="card__img" v-bind:src="card_data.photo" />
+    <img class="card__img" v-bind:src="card_data.photo" :alt="card_data.name" />
   </div>
 </template>
 
@@ -33,15 +38,15 @@ export default {
     card_data: {
       type: Object,
       default() {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
   data() {
     return {};
   },
   computed: {},
-  methods: {}
+  methods: {},
 };
 </script>
 
@@ -53,16 +58,15 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  max-width: 600px;
   box-shadow: 0 0 8px 0 #202020;
   border: none;
-  padding: 20px;
+  padding: 10px;
 }
 
 .card__container {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 50%;
 }
 
 .card__title {
@@ -90,5 +94,33 @@ export default {
   border-radius: 10px;
   object-fit: cover;
   object-position: center;
+}
+
+@media screen and (max-width: 565px) {
+  .card {
+    gap: 10px;
+    padding: 5px;
+  }
+  .card__img {
+    width: 200px;
+    height: 170px;
+  }
+  .card__title {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .card__subtitle {
+    font-size: 13px;
+  }
+
+  .card__text {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .card__img {
+    width: 120px;
+    width: 120px;
+  }
 }
 </style>
